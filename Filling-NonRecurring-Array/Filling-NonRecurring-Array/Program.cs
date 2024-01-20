@@ -14,8 +14,21 @@ namespace Filling_NonRecurring_Array
 
             int[] nonRecuringArray = new int[arrLangth];
 
-            SaftyParsing("Which num in ur array will be the smallest? ", out int arrayMinValue);
-            SaftyParsing("Which num in ur array will be the biggest? ", out int arrayMaxValue);
+            int arrayMinValue;
+            int arrayMaxValue;
+            bool isEnough = false;
+            do
+            {
+                SaftyParsing("Which num in ur array will be the smallest? ", out arrayMinValue);
+                SaftyParsing("Which num in ur array will be the biggest? ", out arrayMaxValue);
+
+                if (arrLangth <= (arrayMaxValue - arrayMinValue))
+                    isEnough = true;
+                else
+                    isEnough = false;
+
+            } while (!isEnough);
+            
 
 
             Random random = new Random();
@@ -49,7 +62,7 @@ namespace Filling_NonRecurring_Array
         static bool NonRecuringNumber(int[] arr, int index, int numb)
         {
 
-            for (int i = 0; i <= index; i++)
+            for (int i = 0; i < index; i++)
             {
                 if (arr[i] == numb)
                 {
